@@ -179,6 +179,9 @@ define([
     return false;
   }
 */
+  function findAndChangePlaybackSpeed() {
+    changePlaybackSpeed(document.getElementById('playback_speed_range'));
+  }
 
   function getDownloadVideoUrls(FS) {
     var maxSecondsOutside = 300;
@@ -461,6 +464,8 @@ define([
       var speedHTML = "<span style='position: absolute; right: 10px'><label id='decrSpeedIcon' onclick='changePlaybackSpeed(-1)'>-</label>";
       speedHTML += "<label id='playbackRateLabel' style='color:blue; width:50px'>   1X  </label>";
       speedHTML += "<label id='incrSpeedIcon' onclick='changePlaybackSpeed(1)'>+</label></span>";
+
+      speedHTML = "<input type='range' id='playback_speed_range_test' step='10' onchange='findAndChangePlaybackSpeed()'>"
 
       var linkHTML = "&nbsp;&nbsp;<img id='linkImage' src='assets/images/link.png' width='24' height='24' onclick='linkImage_clickHandler()'/>"
       var lockHTML = "&nbsp;&nbsp;<img id='lockImage' src='assets/images/unlock_24x24.png' width='24' height='24' onclick='lockImage_clickHandler()'/>"

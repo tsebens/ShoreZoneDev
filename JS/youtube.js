@@ -79,16 +79,25 @@ function CheckVideoProgress() {
   szVideoWidget.update_track(szVideoWidget.getVideoPosition(), duration);
 }
 
-function changePlaybackSpeed(dir) {
+function changePlaybackSpeed(p) {
+  console.log('Change playback speed');
+  /*Change the playback speed of the video player to p. p should be a value between 0 and 100. 0 will indicate the lowest possible playback speed, 100 the highest*/
   if (!youtube_player)
     return;
-  var availRates = youtube_player.getAvailablePlaybackRates();
-  var currRate = youtube_player.getPlaybackRate();
-  var i = availRates.indexOf(currRate);
-  var j = i + dir;
-  if (j>=0 && j<availRates.length) {
-    szVideoWidget.setPlaybackRate(availRates[j], j==0, j==(availRates.length-1))
-  }
+  var avail_rates = youtube_player.getAvailablePlaybackRates();
+  index = getProportionalInt(p, 0, avail_rates.length);
+  var new_rate = avail_rates[index]
+  // Ensure that the produced value is within possible bounds.
+  console.assert(index>=0 && index<Math.max(avail_rates.length), {'index': index, 'min-index': 0, 'max-index': avail_rates.length - 1,'msg': 'Index is outside of the acceptable range.'});
+  // Set the playback rate to the appropriate rate
+  // TODO: This should be
+  szVideoWidget.setPlaybackRate(new_rate, index==0, index==(avail_rates.length-1))
+}
+
+function getProportionalInt(p, min, max) {
+  /* Return the value that is p% of the way between min and max, rounded to the nearest integer.
+  */
+  return Math.round(min + (p / 100.0) * (max - min))
 }
 
 function onYouTubeIframeAPIReady() {

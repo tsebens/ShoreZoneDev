@@ -376,6 +376,10 @@ function toggleBoolean(theWidget, theHandler) {
   alert("toggleBoolean");
 }
 
+function findAndChangePlaybackSpeed() {
+  changePlaybackSpeed(document.getElementById('playback_speed_range'));
+}
+
 
 /* Global SZ functions */
 
