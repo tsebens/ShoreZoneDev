@@ -377,7 +377,7 @@ function toggleBoolean(theWidget, theHandler) {
 }
 
 function findAndChangePlaybackSpeed() {
-  changePlaybackSpeed(document.getElementById('playback_speed_range'));
+  changePlaybackSpeed(document.getElementById('playback_speed_range').value);
 }
 
 
