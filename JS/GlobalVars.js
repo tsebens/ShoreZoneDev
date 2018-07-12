@@ -376,6 +376,10 @@ function toggleBoolean(theWidget, theHandler) {
   alert("toggleBoolean");
 }
 
+function findAndChangePlaybackSpeed() {
+  changePlaybackSpeed(document.getElementById('playback_speed_range').value);
+}
+
 
 /* Global SZ functions */
 
@@ -495,7 +499,6 @@ function sliderHandler(divID) {
 function openNewTab(url) {
   window.open(url);
 }
-
 
 
 //*JN*/ debug("Made it through GlobalVars.js");
