@@ -98,8 +98,19 @@ define([
     var imageUrl = s.slice(0,p) + "/s{0}" + s.slice(p);
     origHeight = data.feed.gphoto$height.$t;
     origWidth = data.feed.gphoto$width.$t;
-
+    console.log("ow: " + origWidth + " - oh:" + origHeight)
+    aspect = origWidth / origHeight
     photoWidth = getEl("photoImage").width;
+    photoHeight = getEl("photoImage").height;
+    panelWidth = getEl("photoContainer").style.width;
+    panelHeight = getEl("photoContainer").style.height;
+    console.log("pw: " + panelWidth + " ph: " + panelHeight)
+    if((panelWidth / aspect) > panelHeight) {
+      console.log("adjusting photo width");
+      photoWidth = panelHeight * aspect;
+    }
+
+
     latest_img_src = imageUrl.replace("{0}", photoWidth);
     orig_img_src = imageUrl.replace("{0}",origWidth);
     $("#photoImage").attr("src", latest_img_src);
