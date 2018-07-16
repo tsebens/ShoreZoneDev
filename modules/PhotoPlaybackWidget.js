@@ -101,18 +101,21 @@ define([
     console.log("ow: " + origWidth + " - oh:" + origHeight)
     aspect = origWidth / origHeight
     photoWidth = getEl("photoImage").width;
-    photoHeight = getEl("photoImage").height;
-    panelWidth = getEl("photoContainer").style.width;
-    panelHeight = getEl("photoContainer").style.height;
+    panelWidth = parseInt(getEl("photoContainer").style.width);
+    panelHeight = parseInt(getEl("photoContainer").style.height);
     console.log("pw: " + panelWidth + " ph: " + panelHeight)
+    console.log(panelWidth / aspect)
     if((panelWidth / aspect) > panelHeight) {
       console.log("adjusting photo width");
-      photoWidth = panelHeight * aspect;
+      panelWidth = parseInt(panelHeight * aspect);
+      console.log("New ow: " + photoWidth + " oh: " + parseInt(panelWidth / aspect))
     }
 
 
-    latest_img_src = imageUrl.replace("{0}", photoWidth);
+    latest_img_src = imageUrl.replace("{0}", panelWidth);
     orig_img_src = imageUrl.replace("{0}",origWidth);
+    console.log(latest_img_src);
+    console.log(orig_img_src);
     $("#photoImage").attr("src", latest_img_src);
     photo_load_times[latest_img_src] = {"load_start": Date.now()}
   }
