@@ -379,10 +379,10 @@ function toggleBoolean(theWidget, theHandler) {
 
 /* Global SZ functions */
 
-function makeMediaPlaybackHtml(controlsTemplate, controlsParameters) {
+function makeMediaPlaybackHtml(controlsTemplate, controlsParameters, id) {
   var outHTML = '';
   outHTML += '';
-  outHTML += '<div class="playbackControlContainer">';
+  outHTML += '<div class="playbackControlContainer" id="' + id +'">';
   outHTML += makeHtmlFromTemplate(controlsTemplate, controlsParameters);
   outHTML += '</div>';
   return outHTML;

@@ -233,7 +233,8 @@ define([
         ['photo_resetForwardButton', 'Reset to End', 'w_collapse.png', 'szPhotoWidget', 'toEnd']
       ];
 
-      photoToolsDiv.innerHTML = makeMediaPlaybackHtml(playbackControlTemplate, controlData_photo);
+      photoToolsDiv.innerHTML = makeMediaPlaybackHtml(playbackControlTemplate, controlData_photo, 'photoTools');
+      photoToolsDiv.innerHTML += "<div style='margin:0 auto; width: 100%' id='photo_link_message'>Click <img id='photoLinkImage' src='assets/images/link.png' width='24' height='24'> to unlock photo controls.</div>"
       setVisible("photo_pauseButton", false);
 
       this.processData = function(results) {
