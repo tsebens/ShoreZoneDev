@@ -50,6 +50,10 @@ define([
     }
   }
 
+  function getPlaybackControlHTML() {
+      return "<span style='position: absolute; right: 10px;'><input type='range' id='playback_speed_range' step='10' onchange='findAndChangePlaybackSpeed()' title='Adjust playback speed'></span>"
+  }
+
   function onVideoProgress(e) {
 
     try {
@@ -455,7 +459,7 @@ define([
         ['video_resetForwardButton', 'Reset to End', 'w_collapse.png', 'szVideoWidget', 'toEnd', video_resetForwardButton_tooltip]
       ];
 
-      speedHTML = "<span style='position: absolute; right: 10px;'><input type='range' id='playback_speed_range' step='10' onchange='findAndChangePlaybackSpeed()' title='Adjust playback speed'></span>"
+      speedHTML = getPlaybackControlHTML()//"<span style='position: absolute; right: 10px;'><input type='range' id='playback_speed_range' step='10' onchange='findAndChangePlaybackSpeed()' title='Adjust playback speed'></span>"
 
       var linkHTML = "&nbsp;&nbsp;<img id='linkImage' src='assets/images/link.png' width='24' height='24' onclick='linkImage_clickHandler()'/>"
       var lockHTML = "&nbsp;&nbsp;<img id='lockImage' src='assets/images/unlock_24x24.png' width='24' height='24' onclick='lockImage_clickHandler()'/>"
