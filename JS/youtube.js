@@ -115,4 +115,8 @@ function onYouTubeIframeAPIReady() {
    //debug("YouTube API set up");
 }
 
+$("#playback_speed_range").on("input", function(val){
+  $("#slider_value").html(val.target.value)
+})
+
 //*JN*/ debug("Made it through youtube.js");

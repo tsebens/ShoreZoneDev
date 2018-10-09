@@ -496,6 +496,10 @@ function sliderHandler(divID) {
   document.getElementById(divID + "_content").style.opacity = document.getElementById(divID + "_slider").value/100;
 }
 
+$("#playback_speed_range").on("input", function(val){
+  $("#slider_value").html(val.target.value)
+})
+
 function openNewTab(url) {
   window.open(url);
 }

@@ -51,7 +51,8 @@ define([
   }
 
   function getPlaybackControlHTML() {
-      return "<span style='position: absolute; right: 10px;'><input type='range' id='playback_speed_range' step='10' onchange='findAndChangePlaybackSpeed()' title='Adjust playback speed'></span>"
+      var html = "<span style='position: absolute; right: 10px;'><input type='range' id='playback_speed_range' step='10' onchange='findAndChangePlaybackSpeed()' title='Adjust playback speed'></span><div id=\"slider_value\" class=\"slider\">Value</div>";
+      return html
   }
 
   function onVideoProgress(e) {
@@ -466,7 +467,10 @@ define([
 
       videoToolsDiv.innerHTML = makeMediaPlaybackHtml(playbackControlTemplate, controlData_video) + speedHTML + lockHTML + linkHTML;
 
-
+    
+      $("#playback_speed_range").on("input", function(val){
+          $("#slider_value").html(val.target.value)
+      })
       },    // end of constructor function
   });
 });

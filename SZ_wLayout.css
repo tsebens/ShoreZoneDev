@@ -149,7 +149,12 @@ cursor: pointer;
 }
 
 
-
+/* 
+    For the video playback speed indicator 
+*/
+.slider {
+  float: right
+}
 
 
 
@@ -169,3 +174,4 @@ cursor: pointer;
 /*.esri-layer-list-panel__content--legend {visibility: hidden; display: none}*/
 
 /* .esri-layer-list-panel */
+
