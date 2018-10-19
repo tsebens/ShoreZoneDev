@@ -50,11 +50,6 @@ define([
     }
   }
 
-  function getPlaybackControlHTML() {
-      var html = "<span style='position: absolute; right: 10px;'><input type='range' id='playback_speed_range' step='10' onchange='findAndChangePlaybackSpeed()' title='Adjust playback speed'></span><div id=\"slider_value\" class=\"slider\">Value</div>";
-      return html
-  }
-
   function onVideoProgress(e) {
 
     try {
@@ -443,6 +438,10 @@ define([
                 return p;
       };
 
+    function getPlaybackControlHTML() {
+      var html = "<div class=\"playback_speed_div\"><span style='position: absolute; right: 30px;'><input type='range' id='playback_speed_range' step='10' onchange='findAndChangePlaybackSpeed()' title='Adjust playback speed'></span><div id=\"slider_value\" class=\"slider_value\"></div></div>";
+      return html
+    }
 
         this.setSyncPhotos(true);
 
