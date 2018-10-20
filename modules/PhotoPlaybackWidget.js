@@ -232,8 +232,12 @@ define([
         ['photo_ForwardButton', 'Play Forwards', 'w_right.png', 'szPhotoWidget', 'playForward'],
         ['photo_resetForwardButton', 'Reset to End', 'w_collapse.png', 'szPhotoWidget', 'toEnd']
       ];
-
-      photoToolsDiv.innerHTML = makeMediaPlaybackHtml(playbackControlTemplate, controlData_photo);
+        
+      var linkHTML = "&nbsp;&nbsp;<img id='linkImage' style='float: left' src='assets/images/link.png' width='24' height='24' onclick='linkImage_clickHandler()'/>"
+      
+        photoToolsDiv.innerHTML = linkHTML + makeMediaPlaybackHtml(playbackControlTemplate, controlData_photo, 'photoTools');
+        getEl('photoTools').style.position = "relative";
+        getEl('photoTools').style.float = "left";
       setVisible("photo_pauseButton", false);
 
       this.processData = function(results) {

@@ -405,19 +405,24 @@ define([
       this.setSyncPhotos = function(synced) {
         sync_photos = synced;
         if (sync_photos && szPhotoWidget.photo_play_timer) clearTimeout(szPhotoWidget.photo_play_timer);
-        photoToolsDivStyle = getEl("photoToolsDiv").style;
+          photoToolsStyle = getEl("photoTools").style;
+          photoTools = getEl("photoTools");
         var linkSrc = "assets/images/link.png";
         if (sync_photos) {
           //photo_cur_index = next_photo_point["photo_index"];
           latest_img_src = false;
           szPhotoWidget.update_photo(szPhotoWidget.next_photo_point)
-          photoToolsDivStyle.visibility = "hidden";
+          photoToolsStyle.disabled = true;
+            photoToolsStyle.opacity = 0.5;
+            photoTools.title = "Click chain icon to unlink photo playback from video and unlock photo playback controls."
         }
         else {
-          photoToolsDivStyle.visibility = "visible";
+          photoToolsStyle.disabled = false;
+            photoToolsStyle.opacity = 1.0;
+            photoTools.title = "Photo playback controls."
           linkSrc = "assets/images/link_break.png";
         }
-        var linkImage = getEl("linkImage");
+          var linkImage = getEl("linkImage");
         if (linkImage)
           linkImage.src = linkSrc;
       };
@@ -461,10 +466,9 @@ define([
 
       speedHTML = getPlaybackControlHTML()//"<span style='position: absolute; right: 10px;'><input type='range' id='playback_speed_range' step='10' onchange='findAndChangePlaybackSpeed()' title='Adjust playback speed'></span>"
 
-      var linkHTML = "&nbsp;&nbsp;<img id='linkImage' src='assets/images/link.png' width='24' height='24' onclick='linkImage_clickHandler()'/>"
       var lockHTML = "&nbsp;&nbsp;<img id='lockImage' src='assets/images/unlock_24x24.png' width='24' height='24' onclick='lockImage_clickHandler()'/>"
 
-      videoToolsDiv.innerHTML = makeMediaPlaybackHtml(playbackControlTemplate, controlData_video) + speedHTML + lockHTML + linkHTML;
+      videoToolsDiv.innerHTML = makeMediaPlaybackHtml(playbackControlTemplate, controlData_video, 'videoTools') + speedHTML + lockHTML;
 
     
       $("#playback_speed_range").on("input", function(val){

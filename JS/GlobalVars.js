@@ -383,10 +383,14 @@ function findAndChangePlaybackSpeed() {
 
 /* Global SZ functions */
 
-function makeMediaPlaybackHtml(controlsTemplate, controlsParameters) {
+function makeMediaPlaybackHtml(controlsTemplate, controlsParameters, id, style) {
+    if (id === undefined)
+        id = ""
+    if (style === undefined)
+        style = ""
   var outHTML = '';
   outHTML += '';
-  outHTML += '<div class="playbackControlContainer">';
+  outHTML += '<div class="playbackControlContainer" id="' + id +'" style="' + style + '">';
   outHTML += makeHtmlFromTemplate(controlsTemplate, controlsParameters);
   outHTML += '</div>';
   return outHTML;
